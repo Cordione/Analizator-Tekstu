@@ -6,6 +6,6 @@ export function countWhiteSpaces(input: string, bool: boolean): number {
     return output.length;
   } else {
     const output = [...input].filter((x) => x != " ");
-    return output.length
+    return output.length;
   }
 }

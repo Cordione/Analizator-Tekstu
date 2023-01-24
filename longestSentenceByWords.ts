@@ -1,5 +1,5 @@
 import { countWords } from "./countWords";
-export function longestSentenceByWords(input: string){
+export function longestSentenceByWords(input: string) {
   //Take input, split it by .
   const inputSplit = input.split(".").filter((x) => x != "");
   //Add variable to store position in inputSplit of shortest sentence, set it as 0 for now
@@ -16,5 +16,5 @@ export function longestSentenceByWords(input: string){
       length = amountOfWords;
     }
   }
-  return [inputSplit[position], length]
+  return [inputSplit[position], length];
 }

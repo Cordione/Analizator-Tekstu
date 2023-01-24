@@ -12,14 +12,8 @@ export function countApperances(input: string) {
   }
   //create helpingArrays to store info
   const appearances: number[] = [];
-  const usedWords: string[] = [];
-  // Iterate throught array to find usedElements
-  splitInput.forEach((element) => {
-    let used = usedWords.find((x) => x === element) ? true : false;
-    if (!used) {
-      usedWords.push(element);
-    }
-  });
+  const usedWords: string[] = [...new Set(splitInput)].filter((x) => x != "");
+
   //Then iterate throught usedWords and find how many times each element from used exist in splitInput.
   usedWords.forEach((element) => {
     const appearance = splitInput.filter((x) => x === element).length;
@@ -29,7 +23,7 @@ export function countApperances(input: string) {
   const mostTimes = Math.max(...appearances);
   //create output sentence based on passed Data
   let output = "";
-  
+
   const verifyDraw = appearances.filter((x) => x == mostTimes);
 
   for (let index = 0; index < appearances.length; index++) {

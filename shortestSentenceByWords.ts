@@ -1,5 +1,5 @@
 import { countWords } from "./countWords";
-export function shortestSentenceByWords(input: string): string {
+export function shortestSentenceByWords(input: string) {
   //Take input, split it by .
   const inputSplit = input.split(".").filter((x) => x != "");
   //Add variable to store position in inputSplit of shortest sentence, set it as 0 for now
@@ -16,5 +16,5 @@ export function shortestSentenceByWords(input: string): string {
       lenght = amountOfWords;
     }
   }
-  return `najkrótsze zdanie pod kątem słów: ${inputSplit[position]}, długość: ${lenght}`;
+  return [inputSplit[position], lenght];
 }

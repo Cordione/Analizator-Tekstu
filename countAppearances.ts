@@ -5,9 +5,9 @@ export function countApperances(input: string) {
   const wordsToFix = splitInput.filter((x) => x.includes("."));
   for (let index = 0; index < wordsToFix.length; index++) {
     const findPosition = splitInput.findIndex((x) => x.includes(wordsToFix[index]));
-    const lenghtOfWordToFix = wordsToFix[index].length;
+    const lengthOfWordToFix = wordsToFix[index].length;
     let fixedWord = [...wordsToFix[index]];
-    fixedWord.splice(lenghtOfWordToFix - 1, 1);
+    fixedWord.splice(lengthOfWordToFix - 1, 1);
     splitInput.splice(findPosition, 1, fixedWord.join(""));
   }
   //create helpingArrays to store info

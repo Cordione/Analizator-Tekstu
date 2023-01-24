@@ -5,7 +5,7 @@ export function sumOfNonWhiteSpaces(input: string){
 const length = countWhiteSpaces(input, false)
 // Split by . exclude empty string
 const amountOfSentences = input.split(".").filter(x => x != '')
-//divate lenght by amountOfSentences
+//divide length by amountOfSentences
 const output = Math.ceil(length/amountOfSentences.length)
 return output
 }

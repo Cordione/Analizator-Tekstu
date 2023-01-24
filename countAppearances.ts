@@ -40,5 +40,5 @@ export function countApperances(input: string) {
       output += `${usedWords[index]} `;
     }
   }
-  return `${output}, ilość wystąpień: ${mostTimes}`;
+  return [output, mostTimes];
 }

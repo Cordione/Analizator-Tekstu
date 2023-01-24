@@ -29,5 +29,5 @@ export function countUniqueLetters(input: string) {
       break;
     }
   }
-  return `${output}, ilość wystąpień: ${mostTimes}`;
+  return [output, mostTimes];
 }

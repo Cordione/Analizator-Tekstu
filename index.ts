@@ -41,7 +41,7 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += amountOfDigits;
+    finalOutputString += `Ilość cyfr: ${amountOfDigits}`;
   }
 
   //Verify IF reversedFlag[3]  == 1 if so count amount of words in input and pass data as: "ilość słów: x"
@@ -51,7 +51,7 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += amountOfWords;
+    finalOutputString += `Ilość słów: ${amountOfWords}`;
   }
 
   //Verify IF reversedFlag[4]  == 1 if so count amount of letters excluding white spaces, count length, return sentence with shortest length, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najkrótsze zdanie pod znaków nie białych: "Look at me", długość: x znaków.
@@ -61,7 +61,7 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += shortest;
+    finalOutputString += `Najkrótsze zdanie pod kątem znaków nie białych: ${shortest[0]}, długość: ${shortest[1]}`;
   }
 
   //Verify IF reversedFlag[5]  == 1 if so count amount of words in input, count length, return sentence with least amount of words, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najkrótsze zdanie pod kątem słów: "Look at me", długość: x słów.
@@ -71,7 +71,7 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += shortest;
+    finalOutputString += `Najkrótsze zdanie pod kątem słów: ${shortest[0]}, długość: ${shortest[1]}`;
   }
 
   //Verify IF reversedFlag[6]  == 1 if so count amount of letters in input excluding white spaces, count length, return sentence with longest length, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najdłuższe zdanie pod kątem słów: "There’s nothing left but silent epitaphs", długość: x znaków.
@@ -81,7 +81,7 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += longest;
+    finalOutputString += `Najdłuższe zdanie pod kątem ilości znaków: ${longest[0]}, długość: ${longest[1]}`;
   }
   //Verify IF reversedFlag[7]  == 1 if so count amount of words in input, count length, return sentence with longest length, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najdłuższe zdanie pod kątem słów: "Look at me", długość: x znaków.
   if (reversedFlag[7] == "1") {
@@ -90,25 +90,25 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += longest;
+    finalOutputString += `Najdłuższe zdanie pod kątem słów: ${longest[0]}, długość: ${longest[1]}`;
   }
   //Verify IF reversedFlag[8]  == 1 sum all of non-white spaces in string, divide by amount of . in string, "Look at me. A million pictures on the cenotaph." --> średnia wielkość zdania: 19
   if (reversedFlag[8] == "1") {
-    const nonWhiteSpaces = sumOfNonWhiteSpaces(input);
+    const nonWhiteSpacesAverage = sumOfNonWhiteSpaces(input);
     //IF finalOutputString will contain anything add new line
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += nonWhiteSpaces;
+    finalOutputString += `Średnia ilość znaków w zdaniu: ${nonWhiteSpacesAverage}`;
   }
   //Verify IF reversedFlag[9]  == 1 sum all of words in string, divide by amount of . in string, "Look at me. A million pictures on the cenotaph." --> średnia wielkość zdania: 5
   if (reversedFlag[9] == "1") {
-    const nonWhiteSpaces = sumOfWords(input);
+    const nonWhiteSpacesAverage = sumOfWords(input);
     //IF finalOutputString will contain anything add new line
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += nonWhiteSpaces;
+    finalOutputString += `Średnia ilość słów w zdaniu: ${nonWhiteSpacesAverage}`;
   }
   //Verify IF reversedFlag[10]  == count how many times each word appears in string input, return one with most appearances, if draw write = "Remis". "Look, look at me! A million pictures on the cenotaph." -> Najwięcej razy wystąpiło: Look ,ilość wystąpień: 2
   if (reversedFlag[10] == "1") {
@@ -116,41 +116,46 @@ function textAnalyzer(input: string, flag: string): string {
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += whichWordsAppearedMostOfTime;
+    if (whichWordsAppearedMostOfTime[0] == "Remis ") {
+      finalOutputString += `Było więcej niż jedno najczęśćiej występujące słowo także padł ${whichWordsAppearedMostOfTime[0]}, ilość wystąpień: ${whichWordsAppearedMostOfTime[1]}`;
+    } else {
+      finalOutputString += `Najczęściej występujące słowo ${whichWordsAppearedMostOfTime[0]}, ilość wystąpień: ${whichWordsAppearedMostOfTime[1]}`;
+    }
   }
   //Verify IF reversedFlag[11]  == count how many times each letter appears in string input, return one with most appearances, if draw write all letters, and amount". "Look at me! " -> Najwięcej razy wystąpiło: o ,ilość wystąpień: 2
   if (reversedFlag[11] == "1") {
-    const whichWordsAppearedMostOfTime = countUniqueLetters(input);
+    const whichLetterAppearedMostOfTime = countUniqueLetters(input);
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
     }
-    finalOutputString += whichWordsAppearedMostOfTime;
+    finalOutputString += `Najczęściej występująca litera ${whichLetterAppearedMostOfTime[0]}, ilość wystąpień: ${whichLetterAppearedMostOfTime[1]}`;
   }
   return finalOutputString;
 }
 
-console.log(`Ilość spacji:`, textAnalyzer("Look at me", "1"));
+console.log(textAnalyzer("Look at me", "1"));
 console.log("---------------------------");
-console.log(`Ilość liter:`, textAnalyzer("Look at me", "10"));
-console.log(`Ilość spacji i liter:`, textAnalyzer("Look at me", "11"));
+console.log(textAnalyzer("Look at me", "10"));
+console.log(textAnalyzer("Look at me", "11"));
 console.log("---------------------------");
-console.log(`Ilość cyfr:`, textAnalyzer("Look at m23e", "100"));
+console.log(textAnalyzer("Look at m23e", "100"));
 console.log("---------------------------");
-console.log(`Ilość słów:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000"));
-console.log(`Ilość liter:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1010"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1010"));
 console.log("---------------------------");
-console.log(`Najkrótsze zdanie, ilości znaków:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000"));
 console.log("---------------------------");
-console.log(`Najkrótsze zdanie, ilość słow:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "100000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "100000"));
 console.log("---------------------------");
-console.log(`Najdłuższe zdanie, ilość znaków:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000000"));
 console.log("---------------------------");
-console.log(`Najdłuższe zdanie, ilość słów:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000000"));
 console.log("---------------------------");
-console.log(`Średnia ilość znaków w zdaniu:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "100000000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "100000000"));
 console.log("---------------------------");
-console.log(`Średnia ilość słów w zdaniu:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000000000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000000000"));
 console.log("---------------------------");
-console.log(`Ilość wystąpień:`, textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000000000"));
-console.log(`Ilość wystąpień:`, textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "10000000000"));
-console.log(`Ilość wystąpień:`, textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "100000000000"));
+console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000000000"));
+console.log(textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "10000000000"));
+console.log("---------------------------");
+console.log(textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "100000000000"));

@@ -1,5 +1,5 @@
 import { countWhiteSpaces } from "./countWhiteSpaces";
-export function longestSentenceByWhiteSpaces(input: string, byWhiteSpaces: boolean): string {
+export function longestSentenceByWhiteSpaces(input: string, byWhiteSpaces: boolean) {
   //Split sentences by . exclude empty strings
   const inputSplit = input.split(".").filter((x) => x != "");
   //Add variable to store position in inputSplit of shortest sentence, set it as 0 for now
@@ -16,5 +16,5 @@ export function longestSentenceByWhiteSpaces(input: string, byWhiteSpaces: boole
       lenght = amountOfNonWhiteSigns;
     }
   }
-  return `najdłuższe zdanie pod kątem ilości znaków: ${inputSplit[position]}, długość: ${lenght}`;
+  return [inputSplit[position], lenght];
 }

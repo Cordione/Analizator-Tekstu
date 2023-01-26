@@ -10,10 +10,11 @@ export function countApperances(input: string) {
     fixedWord.splice(lengthOfWordToFix - 1, 1);
     splitInput.splice(findPosition, 1, fixedWord.join(""));
   }
+  //create regex to verify if word contain at least one A-Zaz
+  const reg = /[A-Za-z]/;
   //create helpingArrays to store info
   const appearances: number[] = [];
-  const usedWords: string[] = [...new Set(splitInput)].filter((x) => x != "");
-
+  const usedWords: string[] = [...new Set(splitInput)].filter((x) => x != "" && reg.test(x));
   //Then iterate throught usedWords and find how many times each element from used exist in splitInput.
   usedWords.forEach((element) => {
     const appearance = splitInput.filter((x) => x === element).length;

@@ -26,7 +26,6 @@ export function countApperances(input: string) {
 
   const verifyDraw = appearances.filter((x) => x == mostTimes);
   //Verify if input length is greater then 0 and split input[0] is different then ""
-  console.log(splitInput[0] != "" && splitInput.length > 0);
   if (splitInput[0] != "" && splitInput.length > 0) {
     for (let index = 0; index < appearances.length; index++) {
       if (appearances[index] === mostTimes && verifyDraw.length > 1) {

@@ -22,12 +22,15 @@ export function countUniqueLetters(input: string) {
   const mostTimes = Math.max(...appearances);
   //create output sentence based on passed Data
   let output = "";
-
-  for (let index = 0; index < appearances.length; index++) {
-    if (appearances[index] === mostTimes) {
-      output += `${uniqueLetters[index]} `;
-      break;
+  if (splitInput[0] != "" && splitInput.length > 0) {
+    for (let index = 0; index < appearances.length; index++) {
+      if (appearances[index] === mostTimes) {
+        output += `${uniqueLetters[index]} `;
+        break;
+      }
     }
+    return [output, mostTimes];
+  } else {
+    return ["", 0];
   }
-  return [output, mostTimes];
 }

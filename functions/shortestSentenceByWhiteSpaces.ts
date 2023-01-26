@@ -20,6 +20,6 @@ export function shortestSentenceByWhiteSpaces(input: string, byWhiteSpaces: bool
     }
     return [inputSplit[position], length];
   } else {
-    return ["", 0]
+    return ["", 0];
   }
 }

@@ -1,15 +1,15 @@
-import { countWhiteSpaces } from "./countWhiteSpaces";
-import { countLetters } from "./countLetters";
-import { countDigits } from "./countDigits";
-import { countWords } from "./countWords";
-import { shortestSentenceByWhiteSpaces as shortestSentenceByWhiteSpaces } from "./shortestSentenceByWhiteSpaces";
-import { shortestSentenceByWords } from "./shortestSentenceByWords";
-import { longestSentenceByWhiteSpaces } from "./longestSentenceByWhiteSpaces";
-import { longestSentenceByWords } from "./longestSentenceByWords";
-import { sumOfNonWhiteSpaces } from "./sumOfNonWhiteSpaces";
-import { sumOfWords } from "./sumOfWords";
-import { countApperances } from "./countAppearances";
-import { countUniqueLetters } from "./countUniqueLetters";
+import { countWhiteSpaces } from "./functions/countWhiteSpaces";
+import { countLetters } from "./functions/countLetters";
+import { countDigits } from "./functions/countDigits";
+import { countWords } from "./functions/countWords";
+import { shortestSentenceByWhiteSpaces as shortestSentenceByWhiteSpaces } from "./functions/shortestSentenceByWhiteSpaces";
+import { shortestSentenceByWords } from "./functions/shortestSentenceByWords";
+import { longestSentenceByWhiteSpaces } from "./functions/longestSentenceByWhiteSpaces";
+import { longestSentenceByWords } from "./functions/longestSentenceByWords";
+import { sumOfNonWhiteSpaces } from "./functions/sumOfNonWhiteSpaces";
+import { sumOfWords } from "./functions/sumOfWords";
+import { countApperances } from "./functions/countAppearances";
+import { countUniqueLetters } from "./functions/countUniqueLetters";
 
 function textAnalyzer(input: string, flag: string): string {
   //Reverse flag input (first element go to last spot and so on)  i.e "10101001"-> 10010101 | (0,1 ... n-1 n)=> n,n-1 ... 1,0
@@ -133,7 +133,7 @@ function textAnalyzer(input: string, flag: string): string {
   return finalOutputString;
 }
 
-console.log(textAnalyzer("Look at me", "1"));
+console.log(`2^0`, textAnalyzer("Look at me", "1"));
 console.log("---------------------------");
 console.log(textAnalyzer("Look at me", "10"));
 console.log(textAnalyzer("Look at me", "11"));
@@ -159,3 +159,9 @@ console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs
 console.log(textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "10000000000"));
 console.log("---------------------------");
 console.log(textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "100000000000"));
+console.log("---------------------------");
+console.log(textAnalyzer("Look up! The sky is falling!", "111111111111"));
+console.log("---------------------------");
+console.log(textAnalyzer("", "111111111111"));
+console.log("---------------------------");
+console.log(textAnalyzer("Look at 123 cats of 4 houses", "111111111111"));

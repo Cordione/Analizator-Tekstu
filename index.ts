@@ -132,36 +132,4 @@ function textAnalyzer(input: string, flag: string): string {
   }
   return finalOutputString;
 }
-
-console.log(`2^0`, textAnalyzer("Look at me", "1"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me", "10"));
-console.log(textAnalyzer("Look at me", "11"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at m23e", "100"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000"));
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1010"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "100000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "100000000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "1000000000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at me. There’s nothing left but silent epitaphs.", "10000000000"));
-console.log(textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "10000000000"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look Look at me. There’s  nothing left left but silent epitaphs.", "100000000000"));
-console.log("---------------------------");
 console.log(textAnalyzer("Look up! The sky is falling!", "111111111111"));
-console.log("---------------------------");
-console.log(textAnalyzer("", "111111111111"));
-console.log("---------------------------");
-console.log(textAnalyzer("Look at 123 cats of 4 houses", "111111111111"));

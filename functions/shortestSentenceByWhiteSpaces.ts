@@ -7,14 +7,19 @@ export function shortestSentenceByWhiteSpaces(input: string, byWhiteSpaces: bool
   //Add variable to store length of shortest sentence, set it as undefined for now
   let length: undefined | number = undefined;
   //Then iterate throught inputSplit.length calling function countWord and update this 2 variables
-  for (let index = 0; index < inputSplit.length; index++) {
-    const amountOfNonWhiteSigns = countWhiteSpaces(inputSplit[index], byWhiteSpaces);
-    if (length == undefined) {
-      length = amountOfNonWhiteSigns;
-    } else if (length > amountOfNonWhiteSigns) {
-      position = index;
-      length = amountOfNonWhiteSigns;
+  //Verify if inputSplit is not empty
+  if (inputSplit.length > 0) {
+    for (let index = 0; index < inputSplit.length; index++) {
+      const amountOfNonWhiteSigns = countWhiteSpaces(inputSplit[index], byWhiteSpaces);
+      if (length == undefined) {
+        length = amountOfNonWhiteSigns;
+      } else if (length > amountOfNonWhiteSigns) {
+        position = index;
+        length = amountOfNonWhiteSigns;
+      }
     }
+    return [inputSplit[position], length];
+  } else {
+    return ["", 0]
   }
-  return [inputSplit[position], length];
 }

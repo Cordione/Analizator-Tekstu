@@ -1,8 +1,8 @@
 export function countApperances(input: string) {
   //split input by white spaces
   const splitInput = input.split(" ");
-  //remove dot from last word of the sentences
-  const wordsToFix = splitInput.filter((x) => x.includes("."));
+  //remove . , ! ? from last word of the sentences
+  const wordsToFix = splitInput.filter((x) => x.includes(".") || x.includes("!") || x.includes("?") || x.includes(","));
   for (let index = 0; index < wordsToFix.length; index++) {
     const findPosition = splitInput.findIndex((x) => x.includes(wordsToFix[index]));
     const lengthOfWordToFix = wordsToFix[index].length;
@@ -25,14 +25,19 @@ export function countApperances(input: string) {
   let output = "";
 
   const verifyDraw = appearances.filter((x) => x == mostTimes);
-
-  for (let index = 0; index < appearances.length; index++) {
-    if (appearances[index] === mostTimes && verifyDraw.length > 1) {
-      output += `Remis `;
-      break;
-    } else if (appearances[index] === mostTimes && verifyDraw.length === 1) {
-      output += `${usedWords[index]} `;
+  //Verify if input length is greater then 0 and split input[0] is different then ""
+  console.log(splitInput[0] != "" && splitInput.length > 0);
+  if (splitInput[0] != "" && splitInput.length > 0) {
+    for (let index = 0; index < appearances.length; index++) {
+      if (appearances[index] === mostTimes && verifyDraw.length > 1) {
+        output += `Remis `;
+        break;
+      } else if (appearances[index] === mostTimes && verifyDraw.length === 1) {
+        output += `${usedWords[index]} `;
+      }
     }
+    return [output, mostTimes];
+  } else {
+    return ["", 0];
   }
-  return [output, mostTimes];
 }

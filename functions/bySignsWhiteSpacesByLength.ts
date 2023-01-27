@@ -1,5 +1,10 @@
+// Merge functions ShortestSentenceByWords, LongestSentenceByWords, ShortestSentenceByWhiteSpaces, LongestSentenceByWhiteSpaces
+// For reusability
+
 import { countWhiteSpaces } from "./countWhiteSpaces";
-export function shortestSentenceByWhiteSpaces(input: string, byWhiteSpaces: boolean) {
+import { countWords } from "./countWords";
+
+export function bySignsWhiteSpacesByLength(input: string, byWhiteSpaces: boolean, isShortest: boolean) {
   //Add Regex to split by . ? !
   const reg = /[\.\?\!]/g;
   //Split sentences by . ? ! exclude empty strings
@@ -15,7 +20,7 @@ export function shortestSentenceByWhiteSpaces(input: string, byWhiteSpaces: bool
     //join array
     const singleSentenceWithEndingSign = modifiedInputSplit.join("");
     //overwrite
-    inputSplit.splice(index, 1, singleSentenceWithEndingSign)
+    inputSplit.splice(index, 1, singleSentenceWithEndingSign);
   }
 
   //Add variable to store position in inputSplit of shortest sentence, set it as 0 for now
@@ -23,15 +28,31 @@ export function shortestSentenceByWhiteSpaces(input: string, byWhiteSpaces: bool
   //Add variable to store length of shortest sentence, set it as undefined for now
   let length: undefined | number = undefined;
   //Then iterate throught inputSplit.length calling function countWord and update this 2 variables
-  //Verify if inputSplit length is greater then 0;
+  //Verify if inputSplit.length is greater then 0
+
   if (inputSplit.length > 0) {
     for (let index = 0; index < inputSplit.length; index++) {
-      const amountOfNonWhiteSigns = countWhiteSpaces(inputSplit[index], byWhiteSpaces);
+      let amount: number | undefined;
+      if (byWhiteSpaces) {
+        amount = countWords(inputSplit[index]);
+      }
+      if (!byWhiteSpaces) {
+        amount = countWhiteSpaces(inputSplit[index], byWhiteSpaces);
+      }
       if (length == undefined) {
-        length = amountOfNonWhiteSigns;
-      } else if (length > amountOfNonWhiteSigns) {
-        position = index;
-        length = amountOfNonWhiteSigns;
+        length = amount;
+      }
+      if (isShortest && length != undefined && amount != undefined) {
+        if (length > amount) {
+          position = index;
+          length = amount;
+        }
+      }
+      if (!isShortest && length != undefined && amount != undefined) {
+        if (length < amount) {
+          position = index;
+          length = amount;
+        }
       }
     }
     return [inputSplit[position], length];

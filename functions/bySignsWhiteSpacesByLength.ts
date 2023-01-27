@@ -32,22 +32,27 @@ export function bySignsWhiteSpacesByLength(input: string, byWhiteSpaces: boolean
   //Verify if inputSplit.length is greater then 0
   if (inputSplit.length > 0) {
     for (let index = 0; index < inputSplit.length; index++) {
+      //set types of amount
       let amount: number | undefined;
+      //verify first bool
       if (byWhiteSpaces) {
         amount = countWords(inputSplit[index]);
       }
       if (!byWhiteSpaces) {
         amount = countWhiteSpaces(inputSplit[index], byWhiteSpaces);
       }
+      //if length is not defined set is as equal to amount
       if (length == undefined) {
         length = amount;
       }
+      //if isShortest
       if (isShortest && length != undefined && amount != undefined) {
         if (length > amount) {
           position = index;
           length = amount;
         }
       }
+      //if !isShortest
       if (!isShortest && length != undefined && amount != undefined) {
         if (length < amount) {
           position = index;

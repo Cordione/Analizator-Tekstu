@@ -130,3 +130,7 @@ function textAnalyzer(input: string, flag: string): string {
   return finalOutputString;
 }
 console.log(textAnalyzer("Look up. The sky is falling!", "111111111111"));
+console.log("---------------------------");
+console.log(textAnalyzer("", "111111111111"));
+console.log("---------------------------");
+console.log(textAnalyzer("Look at 123 cats of 4 houses.", "111111111111"));

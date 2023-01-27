@@ -10,7 +10,7 @@ export function bySignsWhiteSpacesByLength(input: string, byWhiteSpaces: boolean
   //Split sentences by . ? ! exclude empty strings
   const inputSplit = input.split(reg).filter((x) => x != "");
   //Store information about element position by which it was splitted.
-  if (inputSplit.length > 0 && inputSplit[0] != undefined && inputSplit[0] != "" && inputSplit[0].match(reg)) {
+  if (inputSplit.length > 0 && inputSplit[0] != undefined) {
     const splitters = [...input.matchAll(reg)];
     //Add missing . ! ? to sentences
     for (let index = 0; index < inputSplit.length; index++) {

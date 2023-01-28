@@ -21,7 +21,7 @@ export function countApperances(input: string) {
     appearances.push(appearance);
   });
   //Find most uses
-  const mostTimes = Math.max(...appearances);
+  let mostTimes = Math.max(...appearances);
   //create output sentence based on passed Data
   let output = "";
 
@@ -35,6 +35,9 @@ export function countApperances(input: string) {
       } else if (appearances[index] === mostTimes && verifyDraw.length === 1) {
         output += `${usedWords[index]} `;
       }
+    }
+    if(mostTimes < 0){
+      mostTimes = 0;
     }
     return [output, mostTimes];
   } else {

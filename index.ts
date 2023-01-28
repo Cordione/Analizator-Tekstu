@@ -134,3 +134,5 @@ console.log("---------------------------");
 console.log(textAnalyzer("", "111111111111"));
 console.log("---------------------------");
 console.log(textAnalyzer("Look at 123 cats of 4 houses.", "111111111111"));
+console.log("---------------------------");
+console.log(textAnalyzer("1111.", "111111111111"));

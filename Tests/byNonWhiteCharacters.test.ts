@@ -9,6 +9,7 @@ describe("Non white characters tests", () => {
     //then
     expect(result).toEqual(["Look up!", 7]);
   });
+
   test("Find longest sentence and return number of non white characters ", () => {
     //Given
     const sentence = "Look up! Two horses were eating grass here.";
@@ -17,5 +18,4 @@ describe("Non white characters tests", () => {
     //then
     expect(result).toEqual([" Two horses were eating grass here.", 29]);
   });
-
 });

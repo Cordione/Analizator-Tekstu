@@ -37,7 +37,6 @@ export function byNonWhite(input: string, isShortest: boolean) {
   //Verify if inputSplit.length is greater then 0
   let amount: number | undefined;
   if (inputSplit.length > 0) {
-    console.log(inputSplit);
     for (let index = 0; index < inputSplit.length; index++) {
       //set types of amount
       //verify first bool

@@ -4,32 +4,6 @@
 import { countWords } from "./countWords";
 
 export function byWords(input: string, isShortest: boolean) {
-  //Add Regex to split by . ? !
-  // const endingCharacters = /[\.\?\!]/g;
-  // const charactersToMatch = /[A-Za-z]/;
-  // const splitedSentences = input.split(endingCharacters);
-  // const modifiedSentences: string[][] = [];
-  // const splitters: string[] = [];
-  // const inputSplit = input.split(endingCharacters).filter((x) => x.match(charactersToMatch));
-
-  // if (inputSplit.length > 0) {
-  //   const splitters = [...input.matchAll(endingCharacters)];
-  //   //Add missing . ! ? to sentences
-  //   for (let index = 0; index < inputSplit.length; index++) {
-  //     //create helping array to split input by signs
-  //     //verify if array contains splitter for sentence
-  //     if (splitters[index] != undefined) {
-  //       const modifiedInputSplit = [...inputSplit[index]];
-  //       // push removed splitter to sentence
-  //       modifiedInputSplit.push(splitters[index][0]);
-  //       //join array
-  //       const singleSentenceWithEndingSign = modifiedInputSplit.join("");
-  //       //overwrite
-  //       inputSplit.splice(index, 1, singleSentenceWithEndingSign);
-  //     }
-  //   }
-  // }
-
   const endingCharacters = /[\.\?\!]/g;
   const charactersToMatch = /[A-Za-z]/;
   const haveSpecialCharacters = /[$&+,:;=@#|'<>^*()%-]/;
@@ -61,12 +35,12 @@ export function byWords(input: string, isShortest: boolean) {
     let isSentence: boolean = false;
     if (splitedSentence.length > 1) {
       isSentence = true;
-      modifiedSentences.push(splitedSentence.join(' '));
+      modifiedSentences.push(splitedSentence.join(" "));
     } else if (splitedSentence.length == 1) {
       const length = splitedSentence[0].length - 1;
       if (splitedSentence[0][length].match(endingCharacters)) {
         isSentence = true;
-        modifiedSentences.push(splitedSentence.join(' '));
+        modifiedSentences.push(splitedSentence.join(" "));
       }
     }
   });

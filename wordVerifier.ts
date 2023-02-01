@@ -1,7 +1,7 @@
 export function checkWords(sentence: string) {
   //Regexes to validate words:
   const haveAtLeastOneLetter = /[A-Za-z]/;
-  const haveSpecialCharacters = /[$&+,:;=@#|'<>^*()%-]/;
+  const haveSpecialCharacters = /[$&+:;=@#|'<>^*()%-]/;
   //Regex to validate ending characters
   const ending = /[!.?]/;
   //Split sentence by Space

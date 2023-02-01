@@ -4,24 +4,30 @@
 import { countWhiteSpaces } from "./countWhiteSpaces";
 import { countWords } from "./countWords";
 
-export function bySignsWhiteSpacesByLength(input: string, byWhiteSpaces: boolean, isShortest: boolean) {
+export function byWords(input: string, isShortest: boolean) {
   //Add Regex to split by . ? !
-  const reg = /[\.\?\!]/g;
-  //Split sentences by . ? ! exclude empty strings
-  const inputSplit = input.split(reg).filter((x) => x != "");
-  //Store information about element position by which it was splitted.
-  if (inputSplit.length > 0 && inputSplit[0] != undefined) {
-    const splitters = [...input.matchAll(reg)];
+  const endingCharacters = /[\.\?\!]/g;
+  const charactersToMatch = /[A-Za-z]/;
+  const splitedSentences = input.split(endingCharacters);
+  const modifiedSentences: string[][] = [];
+  const splitters: string[] = [];
+  const inputSplit = input.split(endingCharacters).filter((x) => x.match(charactersToMatch));
+
+  if (inputSplit.length > 0) {
+    const splitters = [...input.matchAll(endingCharacters)];
     //Add missing . ! ? to sentences
     for (let index = 0; index < inputSplit.length; index++) {
       //create helping array to split input by signs
-      const modifiedInputSplit = [...inputSplit[index]];
-      // push removed splitter to sentence
-      modifiedInputSplit.push(splitters[index][0]);
-      //join array
-      const singleSentenceWithEndingSign = modifiedInputSplit.join("");
-      //overwrite
-      inputSplit.splice(index, 1, singleSentenceWithEndingSign);
+      //verify if array contains splitter for sentence
+      if (splitters[index] != undefined) {
+        const modifiedInputSplit = [...inputSplit[index]];
+        // push removed splitter to sentence
+        modifiedInputSplit.push(splitters[index][0]);
+        //join array
+        const singleSentenceWithEndingSign = modifiedInputSplit.join("");
+        //overwrite
+        inputSplit.splice(index, 1, singleSentenceWithEndingSign);
+      }
     }
   }
   //Add variable to store position in inputSplit of shortest sentence, set it as 0 for now
@@ -30,17 +36,13 @@ export function bySignsWhiteSpacesByLength(input: string, byWhiteSpaces: boolean
   let length: undefined | number = undefined;
   //Then iterate throught inputSplit.length calling function countWord and update this 2 variables
   //Verify if inputSplit.length is greater then 0
+  let amount: number | undefined;
   if (inputSplit.length > 0) {
     for (let index = 0; index < inputSplit.length; index++) {
       //set types of amount
-      let amount: number | undefined;
       //verify first bool
-      if (byWhiteSpaces) {
-        amount = countWords(inputSplit[index]);
-      }
-      if (!byWhiteSpaces) {
-        amount = countWhiteSpaces(inputSplit[index], byWhiteSpaces);
-      }
+      amount = countWords(inputSplit[index]);
+
       //if length is not defined set is as equal to amount
       if (length == undefined) {
         length = amount;
@@ -60,6 +62,8 @@ export function bySignsWhiteSpacesByLength(input: string, byWhiteSpaces: boolean
         }
       }
     }
+  }
+  if (amount != undefined && amount > 0) {
     return [inputSplit[position], length];
   } else {
     return ["", 0];

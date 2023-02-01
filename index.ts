@@ -6,7 +6,8 @@ import { sumOfNonWhiteSpaces } from "./functions/sumOfNonWhiteSpaces";
 import { sumOfWords } from "./functions/sumOfWords";
 import { countApperances } from "./functions/countAppearances";
 import { countUniqueLetters } from "./functions/countUniqueLetters";
-import { bySignsWhiteSpacesByLength } from "./functions/bySignsWhiteSpacesByLength";
+import { byNonWhite } from "./functions/byNonWhiteCharacters";
+import { byWords } from "./functions/byWords";
 
 function textAnalyzer(input: string, flag: string): string {
   //Reverse flag input (first element go to last spot and so on)  i.e "10101001"-> 10010101 | (0,1 ... n-1 n)=> n,n-1 ... 1,0
@@ -53,7 +54,7 @@ function textAnalyzer(input: string, flag: string): string {
 
   //Verify IF reversedFlag[4]  == 1 if so count amount of letters excluding white spaces, count length, return sentence with shortest length, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najkrótsze zdanie pod znaków nie białych: "Look at me", długość: x znaków.
   if (reversedFlag[4] == "1") {
-    const shortest = bySignsWhiteSpacesByLength(input, false, true);
+    const shortest = byNonWhite(input, true);
     //IF finalOutputString will contain anything add new line
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
@@ -63,7 +64,7 @@ function textAnalyzer(input: string, flag: string): string {
 
   //Verify IF reversedFlag[5]  == 1 if so count amount of words in input, count length, return sentence with least amount of words, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najkrótsze zdanie pod kątem słów: "Look at me", długość: x słów.
   if (reversedFlag[5] == "1") {
-    const shortest = bySignsWhiteSpacesByLength(input, true, true);
+    const shortest = byWords(input, true);
     //IF finalOutputString will contain anything add new line
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
@@ -73,7 +74,7 @@ function textAnalyzer(input: string, flag: string): string {
 
   //Verify IF reversedFlag[6]  == 1 if so count amount of letters in input excluding white spaces, count length, return sentence with longest length, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najdłuższe zdanie pod kątem słów: "There’s nothing left but silent epitaphs", długość: x znaków.
   if (reversedFlag[6] == "1") {
-    const longest = bySignsWhiteSpacesByLength(input, false, false);
+    const longest = byNonWhite(input, false);
     //IF finalOutputString will contain anything add new line
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
@@ -82,7 +83,7 @@ function textAnalyzer(input: string, flag: string): string {
   }
   //Verify IF reversedFlag[7]  == 1 if so count amount of words in input, count length, return sentence with longest length, display how it looks i.e  "Look at me. There’s nothing left but silent epitaphs" => najdłuższe zdanie pod kątem słów: "Look at me", długość: x znaków.
   if (reversedFlag[7] == "1") {
-    const longest = bySignsWhiteSpacesByLength(input, true, false);
+    const longest = byWords(input, false);
     //IF finalOutputString will contain anything add new line
     if (finalOutputString.length > 0) {
       finalOutputString += "\r\n";
@@ -129,10 +130,11 @@ function textAnalyzer(input: string, flag: string): string {
   }
   return finalOutputString;
 }
-console.log(textAnalyzer("Look up. The sky is falling!", "111111111111"));
+console.log(textAnalyzer("Look, up. The sky is falling!", "111111111111"));
 console.log("---------------------------");
 console.log(textAnalyzer("", "111111111111"));
 console.log("---------------------------");
 console.log(textAnalyzer("Look at 123 cats of 4 houses.", "111111111111"));
 console.log("---------------------------");
 console.log(textAnalyzer("1111.", "111111111111"));
+

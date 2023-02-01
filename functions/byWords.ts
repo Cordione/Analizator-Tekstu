@@ -1,7 +1,6 @@
 // Merge functions ShortestSentenceByWords, LongestSentenceByWords, ShortestSentenceByWhiteSpaces, LongestSentenceByWhiteSpaces
 // For reusability
 
-import { countWhiteSpaces } from "./countWhiteSpaces";
 import { countWords } from "./countWords";
 
 export function byWords(input: string, isShortest: boolean) {

@@ -2,7 +2,6 @@
 // For reusability
 
 import { countWhiteSpaces } from "./countWhiteSpaces";
-import { countWords } from "./countWords";
 
 export function byNonWhite(input: string, isShortest: boolean) {
   //Add Regex to split by . ? !
@@ -44,7 +43,7 @@ export function byNonWhite(input: string, isShortest: boolean) {
       //verify first bool
 
       amount = countWhiteSpaces(inputSplit[index], false);
-      console.log(amount)
+      console.log(amount);
       //if length is not defined set is as equal to amount
       if (length == undefined) {
         length = amount;

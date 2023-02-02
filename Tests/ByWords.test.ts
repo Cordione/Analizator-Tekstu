@@ -29,7 +29,7 @@ describe("By Words test", () => {
   test(`Single sentence: "Ala ma k@ta" `, () => {
     const sentence = "Ala ma k@ta";
     const result = byWords(sentence, true);
-    expect(result).toEqual(["Ala ma k@ta", 2]);
+    expect(result).toEqual(["Ala ma", 2]);
   });
   test(`Single sentence: "Ala k@t" `, () => {
     const sentence = "Ala k@t";
@@ -49,7 +49,7 @@ describe("By Words test", () => {
   test("Shortest sentence:", () => {
     const sentences = "lalala la la. la la.";
     const result = byWords(sentences, true);
-    expect(result).toEqual([" la la.", 2]);
+    expect(result).toEqual(["la la.", 2]);
   });
   test("Longest sentence:", () => {
     const sentences = "lalala la la. la la.";

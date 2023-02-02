@@ -78,7 +78,7 @@ export function byWords(input: string, isShortest: boolean) {
     }
   }
   if (amount != undefined && amount > 0) {
-    return [inputSplit[position], length];
+    return [modifiedSentences[position], length];
   } else {
     return ["", 0];
   }
